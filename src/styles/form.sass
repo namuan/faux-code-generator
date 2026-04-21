@@ -1,3 +1,6 @@
+@use 'sass:math'
+@use 'variables' as *
+
 form > label
   margin-bottom: $base-unit
 
@@ -58,7 +61,7 @@ label
     position: absolute
     top: -($input-size) - $spacer
     right: 0
-    margin-top: $spacer / 3
+    margin-top: math.div($spacer, 3)
     opacity: 0
     text-align: right
     background: $text-color
@@ -76,7 +79,7 @@ label
       height: $spacer
       background: $text-color
       position: absolute
-      bottom: -($spacer / 2)
+      bottom: -(math.div($spacer, 2))
       right: 12px
       transform: rotate(45deg)
   &:hover

@@ -10,14 +10,10 @@ const themes = {
 const loadTheme = (theme) => themes[theme];
 
 const getElementThemeColor = (element, theme) => {
-  const spanElement = element.tagName === 'SPAN';
-  if (spanElement) {
+  if (element.tagName === 'SPAN') {
     const { className } = element;
-    const type = bindings[className];
-    if (theme[type]) return theme[type];
-    if (process.env.NODE_ENV === 'development') {
-      console.warn('Unresolved syntax class: ', className);
-    }
+    const type = bindings[className] || bindings[className.split(' ')[0]];
+    if (type && theme[type]) return theme[type];
   }
   return theme.text;
 };
